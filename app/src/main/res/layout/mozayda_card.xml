@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="30dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginRight="30dp"
+    android:layout_marginBottom="10dp"
+    app:cardElevation="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fff"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+
+
+            <com.example.misdaqia.Helper.MainFontTextview
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" $ "
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <com.example.misdaqia.Helper.MainFontTextview
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="40dp"
+                android:text="500"
+                android:textColor="@color/orange"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <com.example.misdaqia.Helper.MainFontTextview
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text=" اقل مزايده : "
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+
+
+            <com.example.misdaqia.Helper.MainFontTextview
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" $ "
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <com.example.misdaqia.Helper.MainFontTextview
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="40dp"
+                android:text="1000"
+                android:textColor="@color/orange"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <com.example.misdaqia.Helper.MainFontTextview
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text=" اعلي مزايده : "
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+
+
+
+
+            <com.example.misdaqia.Helper.MainFontEdittext
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="40dp"
+                android:hint="ادخل مزايدتك"
+                android:textColor="@color/orange"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <com.example.misdaqia.Helper.MainFontTextview
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text=" سعر مزايدتك : "
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <com.example.misdaqia.Helper.MainFontButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:text=" اضف مزايدتك "
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_orange"
+            android:textStyle="bold" />
+
+        <com.example.misdaqia.Helper.MainFontButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:text=" الغاء "
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_red"
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            android:layout_marginBottom="20dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

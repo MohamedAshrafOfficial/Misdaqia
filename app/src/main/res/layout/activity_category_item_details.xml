@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darkwhite"
+    tools:context=".View.CategoryItemDetailsActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="250dp"
+                android:layout_centerInParent="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/cars" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="center"
+                    android:src="@drawable/ic_arrow_back_black_24dp"
+                    android:tint="@color/white" />
+
+                <com.example.misdaqia.Helper.MainFontTextview
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:text="رجوع"
+                    android:textColor="#ffffffff"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="190dp"
+                android:src="@drawable/ic_favorite_border_black_24dp"
+                android:tint="@color/orange" />
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="right">
+
+
+            <com.example.misdaqia.Helper.HeaderFontTextview
+                android:id="@+id/itemName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="30dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text="اسم العنصر"
+                android:textColor="@color/orange"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="right"
+            android:orientation="horizontal">
+
+            <com.example.misdaqia.Helper.MainFontTextview
+                android:id="@+id/sellerName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="30dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text="اسم البائع"
+                android:textColor="@color/orange"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <com.example.misdaqia.Helper.MainFontTextview
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="30dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text=" اسم البائع : "
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="right">
+
+
+            <com.example.misdaqia.Helper.MainFontTextview
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text=" $ "
+                android:textColor="@color/orange"
+                android:textSize="20dp" />
+
+            <com.example.misdaqia.Helper.MainFontTextview
+                android:id="@+id/priceItem"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="30dp"
+                android:gravity="center"
+                android:text="1000"
+                android:textColor="@color/orange"
+                android:textSize="20dp" />
+
+            <com.example.misdaqia.Helper.MainFontTextview
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="30dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text=" السعر : "
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="right">
+
+
+            <com.example.misdaqia.Helper.MainFontTextview
+                android:id="@+id/itemType"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="30dp"
+                android:gravity="center"
+                android:text="النوع"
+                android:textColor="@color/orange"
+                android:textSize="20dp" />
+
+            <com.example.misdaqia.Helper.MainFontTextview
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="30dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text=" نوع المزاد :"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="right">
+
+
+            <com.example.misdaqia.Helper.MainFontTextview
+                android:id="@+id/itemModel"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="30dp"
+                android:gravity="center"
+                android:text="النوع"
+                android:textColor="@color/orange"
+                android:textSize="20dp" />
+
+            <com.example.misdaqia.Helper.MainFontTextview
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="30dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text=" نوع المودل :"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="right">
+
+
+            <com.example.misdaqia.Helper.MainFontTextview
+                android:id="@+id/itemColor"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="30dp"
+                android:gravity="center"
+                android:text="اللون"
+                android:textColor="@color/orange"
+                android:textSize="20dp" />
+
+            <com.example.misdaqia.Helper.MainFontTextview
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="30dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text=" اللون :"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="right">
+
+
+            <com.example.misdaqia.Helper.MainFontTextview
+                android:id="@+id/itemYear"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="30dp"
+                android:gravity="center"
+                android:text="السنه"
+                android:textColor="@color/orange"
+                android:textSize="20dp" />
+
+            <com.example.misdaqia.Helper.MainFontTextview
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="30dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text=" السنه :"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+
+
+            <com.example.misdaqia.Helper.MainFontTextview
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text="الموقع"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_location_on_black_24dp"
+                android:tint="@color/orange" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+
+
+            <com.example.misdaqia.Helper.MainFontTextview
+                android:id="@+id/createdAt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text="التاريخ"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_access_time_black_24dp"
+                android:tint="@color/orange" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <com.example.misdaqia.Helper.MainFontButton
+                android:id="@+id/btnBuy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_orange"
+                android:text=" شراء مباشر "
+                android:textColor="@color/white"
+                android:textSize="15dp"
+                 />
+
+            <com.example.misdaqia.Helper.MainFontButton
+                android:id="@+id/btnMozayda"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_grey"
+                android:text=" مزايده "
+                android:textColor="@color/white"
+                android:textSize="15dp"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</ScrollView>

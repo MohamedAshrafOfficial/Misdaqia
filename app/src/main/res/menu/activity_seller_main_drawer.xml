@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/ic_account_circle_black_24dp"
+        android:iconTint="@color/orange"
+        android:title=" حسابي " />
+    <item
+        android:id="@+id/nav_mazadate"
+        android:icon="@drawable/ic_shopping_cart_black_24dp"
+        android:title=" الحقيبه "
+        android:iconTint="@color/orange"/>
+    <item
+        android:id="@+id/nav_favorite"
+        android:icon="@drawable/ic_favorite_black_24dp"
+        android:title="مزاداتي"
+        android:iconTint="@color/orange"/>
+     <item
+        android:id="@+id/nav_mazadfawre"
+        android:icon="@drawable/ic_add_circle_outline_black_24dp"
+        android:title="اضافه مزاد فوري"
+         android:iconTint="@color/orange"
+         />
+     <item
+        android:id="@+id/nav_mazadmaftoh"
+        android:icon="@drawable/ic_add_circle_outline_black_24dp"
+        android:title="اضافه مزاد مفتوح"
+         android:iconTint="@color/orange"/>
+     <item
+        android:id="@+id/nav_mazadmosar"
+        android:icon="@drawable/ic_add_circle_outline_black_24dp"
+        android:title="اضافه مزاد مسعر"
+         android:iconTint="@color/orange"/>
+
+    <item
+        android:id="@+id/nav_elmahfza"
+        android:icon="@drawable/ic_style_black_24dp"
+        android:title="المحفظه"
+        android:iconTint="@color/orange"/>
+    <item
+        android:id="@+id/nav_logout"
+        android:icon="@drawable/ic_arrow_back_black_24dp"
+        android:title="تسجيل الخروج"
+        android:iconTint="@color/orange"/>
+
+
+</menu>

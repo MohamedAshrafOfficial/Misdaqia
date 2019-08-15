@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name">Mesdakya</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">البريد الالكترونى </string>
+    <string name="prompt_phone">رقم الهاتف  </string>
+    <string name="prompt_password">كلمه المرور </string>
+    <string name="confirm_password"> تأكيد كلمه المرور </string>
+    <string name="action_sign_in">تسجيل الدخول </string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="forget_password">هل نسيت كلمه المرور !</string>
+    <string name="sign_up2">انشاء حساب جديد</string>
+    <string name="sign_up1">ليس لديك حساب !</string>
+    <string name="first_name">الاسم الاول </string>
+    <string name="last_name">الاسم الاخير </string>
+    <string name="wallet">محفظتى </string>
+    <string name="wallet2">الحقيبة </string>
+    <string name="seller">مزاداتى  </string>
+    <string name="edit_profile">تعديل الملف الشخصى  </string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="title_activity_client_main">ClientMainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+    <string name="title_activity_seller_main">SellerMainActivity</string>
+</resources>
