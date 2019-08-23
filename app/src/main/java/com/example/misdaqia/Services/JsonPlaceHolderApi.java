@@ -1,12 +1,13 @@
 package com.example.misdaqia.Services;
 
-import com.example.misdaqia.Model.Category;
-import com.example.misdaqia.Model.User;
+import com.example.misdaqia.Model.LoginUserResponse;
+import com.example.misdaqia.Model.MainCategory;
+import com.example.misdaqia.Model.MainCategoryResponse;
+import com.example.misdaqia.Model.registerUserResponse;
 
 import retrofit2.Call;
-import retrofit2.http.Body;
 import retrofit2.http.Field;
- import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 
@@ -14,20 +15,24 @@ public interface JsonPlaceHolderApi {
 
 
     @FormUrlEncoded
-    @POST("registerapi")
-    Call<User> CreateUser(
+    @POST("register")
+    Call<registerUserResponse> createUser(
             @Field("name") String Name,
-            @Field("username") String username,
             @Field("email") String email,
             @Field("password") String password,
-            @Field("email_verified_at") String email_verified);
+            @Field("c_password") String re_password);
 
-    @GET("getvichleapi")
-    Call<Category> getCategories();
+    @FormUrlEncoded
+    @POST("login")
+    Call<LoginUserResponse> loginUser(
+            @Field("email") String email,
+            @Field("password") String password);
 
-//    @FormUrlEncoded
-//    @POST("register")
-//    Call<User> CreateUser(@Body User user);
+    @GET("getCategoryApi ")
+    Call<MainCategoryResponse> getCategories();
+
+    @GET("getMazadApi")
+    Call<MainCategoryResponse> getMazadat();
 
 
 }

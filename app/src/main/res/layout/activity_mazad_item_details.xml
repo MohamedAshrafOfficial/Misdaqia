@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/darkwhite"
-    tools:context=".View.CategoryItemDetailsActivity">
+    tools:context=".View.MazadItemDetailsActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -56,7 +56,7 @@
                 android:layout_height="40dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="190dp"
-                android:src="@drawable/ic_favorite_border_black_24dp"
+                 android:src="@drawable/ic_favorite_border_black_24dp"
                 android:tint="@color/orange" />
         </RelativeLayout>
 

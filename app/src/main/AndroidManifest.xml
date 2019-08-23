@@ -13,21 +13,20 @@
         android:supportsRtl="false"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".View.CategoryItemDetailsActivity"/>
+        <activity android:name=".View.MazadItemDetailsActivity" />
 
-        <activity android:name=".View.CategoryDetailsActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".View.CategoryDetailsActivity" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
 
         <activity
             android:name=".View.SignUpActivity"
+            android:theme="@style/FullScreen"
             android:windowSoftInputMode="stateHidden" />
 
-        <activity android:name=".View.SplashActivity" />
+        <activity
+            android:name=".View.SignInActivity"
+            android:theme="@style/FullScreen"
+            android:windowSoftInputMode="stateHidden" />
 
         <activity
             android:name=".View.MainActivity"
@@ -36,9 +35,14 @@
         <activity android:name=".View.Profile" />
 
         <activity
-            android:name=".View.SignInActivity"
-            android:windowSoftInputMode="stateHidden">
+            android:name=".View.SplashActivity"
+            android:theme="@style/FullScreen">
 
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

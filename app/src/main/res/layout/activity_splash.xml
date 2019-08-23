@@ -8,13 +8,13 @@
     android:layout_gravity="center"
     android:background="@drawable/back"
     tools:context=".View.SplashActivity">
-    <TextView
+    <com.example.misdaqia.Helper.HeaderFontTextview
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:id="@+id/splashTxt"
         android:textDirection="anyRtl"
         android:scaleType="fitXY"
-        android:text="Misdaqia"
+        android:text="مصداقيه"
         android:textSize="36sp"
         android:textColor="@color/orange"
         android:textStyle="bold"

@@ -76,23 +76,23 @@
 
             android:singleLine="true" />
 
-        <com.example.misdaqia.Helper.MainFontEdittext
-            android:id="@+id/edtusername"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="40dp"
-            android:background="@drawable/back_edit"
-            android:gravity="center"
-            android:hint="اسم المستخدم"
-            android:inputType="text"
-            android:maxLines="1"
-            android:paddingLeft="25dp"
-            android:paddingTop="9dp"
-            android:paddingRight="25dp"
-            android:paddingBottom="9dp"
-            android:singleLine="true" />
+        <!--<com.example.misdaqia.Helper.MainFontEdittext-->
+            <!--android:id="@+id/edtusername"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="40dp"-->
+            <!--android:layout_marginTop="20dp"-->
+            <!--android:layout_marginRight="40dp"-->
+            <!--android:background="@drawable/back_edit"-->
+            <!--android:gravity="center"-->
+            <!--android:hint="اسم المستخدم"-->
+            <!--android:inputType="text"-->
+            <!--android:maxLines="1"-->
+            <!--android:paddingLeft="25dp"-->
+            <!--android:paddingTop="9dp"-->
+            <!--android:paddingRight="25dp"-->
+            <!--android:paddingBottom="9dp"-->
+            <!--android:singleLine="true" />-->
 
 
         <com.example.misdaqia.Helper.MainFontEdittext
@@ -124,7 +124,7 @@
             android:background="@drawable/back_edit"
             android:gravity="center"
             android:hint="@string/prompt_password"
-            android:inputType="textPassword"
+            android:inputType="textWebPassword"
             android:maxLines="1"
             android:paddingLeft="25dp"
             android:paddingTop="9dp"
@@ -143,7 +143,7 @@
             android:background="@drawable/back_edit"
             android:gravity="center"
             android:hint="@string/confirm_password"
-            android:inputType="textPassword"
+            android:inputType="textWebPassword"
             android:maxLines="1"
             android:paddingLeft="25dp"
             android:paddingTop="9dp"

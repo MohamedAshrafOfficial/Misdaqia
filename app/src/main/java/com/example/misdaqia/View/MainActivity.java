@@ -1,40 +1,113 @@
 package com.example.misdaqia.View;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
-import android.view.MenuItem;
-import android.support.design.widget.NavigationView;
-import android.support.v4.widget.DrawerLayout;
-
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
 
+import com.example.misdaqia.Adapters.MainCategoriesAdapter;
+import com.example.misdaqia.Model.MainCategory;
+import com.example.misdaqia.Model.MainCategoryResponse;
 import com.example.misdaqia.R;
+import com.example.misdaqia.Services.ApiClient;
+import com.example.misdaqia.Services.JsonPlaceHolderApi;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private static final String TAG = "MainActivity";
+    private RecyclerView categoryRecycler;
+    private RecyclerView mazadatRecycler;
+    Toolbar toolbar;
+    DrawerLayout drawer;
+    NavigationView navigationView;
+    ProgressDialog progressDialog;
+
+    JsonPlaceHolderApi jsonPlaceHolderApi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        initView();
+
+        setSupportActionBar(toolbar);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
+        jsonPlaceHolderApi = ApiClient.getApiClient().create(JsonPlaceHolderApi.class);
+
+
+
+        getCategories();
+
     }
 
+    /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    private void getCategories() {
+
+        progressDialog.show();
+            Call<MainCategoryResponse> call = jsonPlaceHolderApi.getCategories();
+
+
+            call.enqueue(new Callback<MainCategoryResponse>() {
+                @Override
+                public void onResponse(Call<MainCategoryResponse> call, Response<MainCategoryResponse> response) {
+
+                    List<MainCategory> list = response.body().getMainCategory();
+
+
+                    progressDialog.dismiss();
+
+                    categoryRecycler.setAdapter(new MainCategoriesAdapter( MainActivity.this,list));
+                }
+
+                @Override
+                public void onFailure(Call<MainCategoryResponse> call, Throwable t) {
+                    progressDialog.dismiss();
+
+                    Log.d(TAG, "onFailure: " + t.getMessage());
+                    Toast.makeText(MainActivity.this, "" + t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+
+
+    }
+
+
+
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -61,8 +134,8 @@ public class MainActivity extends AppCompatActivity
 
         }
 
-
     }
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -70,6 +143,7 @@ public class MainActivity extends AppCompatActivity
         getMenuInflater().inflate(R.menu.seller_main, menu);
         return true;
     }
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -85,6 +159,7 @@ public class MainActivity extends AppCompatActivity
 
         return super.onOptionsItemSelected(item);
     }
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -108,6 +183,21 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_elmahfza) {
 
         } else if (id == R.id.nav_logout) {
+            new AlertDialog.Builder(this)
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setTitle("خروج")
+                    .setMessage("هل انت متاكد من الخروج!")
+                    .setPositiveButton("نعم", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            startActivity(new Intent(MainActivity.this, SignInActivity.class));
+                            finish();
+                        }
+
+                    })
+                    .setNegativeButton("لا", null)
+                    .show();
 
         }
 
@@ -115,6 +205,26 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+
+    private void initView() {
+        toolbar = findViewById(R.id.toolbar);
+
+        drawer = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+
+        progressDialog=new ProgressDialog(MainActivity.this);
+        progressDialog.setMessage("please wait ....");
+        categoryRecycler = (RecyclerView) findViewById(R.id.category_recycler);
+//        mazadatRecycler = (RecyclerView) findViewById(R.id.mazadat_recycler);
+
+//        LinearLayoutManager horizontalLayoutManagaer = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
+
+        categoryRecycler.setLayoutManager(new GridLayoutManager(this,2));
+//        mazadatRecycler.setLayoutManager(new LinearLayoutManager(this));
+    }
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 }

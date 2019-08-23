@@ -12,7 +12,7 @@ import com.example.misdaqia.Helper.MainFontTextview;
 import com.example.misdaqia.Model.Category;
 import com.example.misdaqia.R;
 
-public class CategoryItemDetailsActivity extends AppCompatActivity {
+public class MazadItemDetailsActivity extends AppCompatActivity {
 
     HeaderFontTextview itemName;
     MainFontTextview sellerName;
@@ -26,11 +26,11 @@ public class CategoryItemDetailsActivity extends AppCompatActivity {
     MainFontButton btnBuy;
     Dialog dialog;
     Category currentCategory;
-    private static final String TAG = "CategoryItemDetailsActivity";
+    private static final String TAG = "MazadItemDetailsActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_category_item_details);
+        setContentView(R.layout.activity_mazad_item_details);
 
         initViews();
         currentCategory = (Category) getIntent().getSerializableExtra("category");
@@ -63,7 +63,7 @@ public class CategoryItemDetailsActivity extends AppCompatActivity {
         btnMozayda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialog = new Dialog(CategoryItemDetailsActivity.this);
+                dialog = new Dialog(MazadItemDetailsActivity.this);
                 dialog.setContentView(R.layout.mozayda_card);
                 dialog.show();
             }

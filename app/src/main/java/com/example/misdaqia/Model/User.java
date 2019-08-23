@@ -9,9 +9,6 @@ public class User {
     @Expose
     private String name;
 
-    @SerializedName("username")
-    @Expose
-    private String username;
 
     @SerializedName("email")
     @Expose
@@ -22,25 +19,30 @@ public class User {
     @Expose
     private String password;
 
-    @SerializedName("email_verified_at")
+    @SerializedName("c_password")
     @Expose
-    private String email_verified;
+    private String re_password;
 
 
-    public User(String name, String username, String email, String password, String email_verified) {
+
+    public User(String name, String email, String password, String re_password) {
         this.name = name;
-        this.username = username;
         this.email = email;
         this.password = password;
-        this.email_verified = email_verified;
+        this.re_password = re_password;
     }
 
-    public String getEmail_verified() {
-        return email_verified;
+    public User(String email, String password) {
+        this.email = email;
+        this.password = password;
     }
 
-    public void setEmail_verified(String email_verified) {
-        this.email_verified = email_verified;
+    public String getRe_password() {
+        return re_password;
+    }
+
+    public void setRe_password(String re_password) {
+        this.re_password = re_password;
     }
 
     public String getName() {
@@ -68,11 +70,4 @@ public class User {
     }
 
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
 }

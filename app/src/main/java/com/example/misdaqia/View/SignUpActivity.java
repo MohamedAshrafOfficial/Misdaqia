@@ -1,17 +1,18 @@
 package com.example.misdaqia.View;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.util.Patterns;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.misdaqia.Common.Common;
 import com.example.misdaqia.Helper.MainFontButton;
 import com.example.misdaqia.Helper.MainFontEdittext;
+import com.example.misdaqia.Model.registerUserResponse;
 import com.example.misdaqia.Model.User;
 import com.example.misdaqia.R;
 import com.example.misdaqia.Services.ApiClient;
@@ -21,13 +22,11 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 
 public class SignUpActivity extends AppCompatActivity {
 
     private CircleImageView profileProfileImage;
     private MainFontEdittext edtname;
-    private MainFontEdittext edtusername;
     private MainFontEdittext edtemail;
     private MainFontEdittext edtpassword;
     private MainFontEdittext edtPasswordVerified;
@@ -37,9 +36,9 @@ public class SignUpActivity extends AppCompatActivity {
 
     JsonPlaceHolderApi jsonPlaceHolderApi;
 
-    User user;
 
     private static final String TAG = "SignUpActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,14 +61,14 @@ public class SignUpActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 String name = edtname.getText().toString();
-                String user_name = edtusername.getText().toString();
                 String email = edtemail.getText().toString();
                 String password = edtpassword.getText().toString();
+                String re_password = edtPasswordVerified.getText().toString();
 
                 if (checkValidation() == false) {
                     return;
                 } else {
-                    createUser(name, user_name, email, password, email);
+                    createUser(name, email, password, re_password);
 
                 }
 
@@ -78,46 +77,49 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////
-    private void createUser(String name, String username, String email, String password, String verify) {
+    private void createUser(String name, String email, String password, String re_password) {
 
         progressDialog.show();
 
-        Call<User> call = jsonPlaceHolderApi.CreateUser(name, username, email, password, verify);
+        Call<registerUserResponse> call = jsonPlaceHolderApi.createUser(name, email, password, re_password);
 
-        call.enqueue(new Callback<User>() {
+        call.enqueue(new Callback<registerUserResponse>() {
             @Override
-            public void onResponse(Call<User> call, Response<User> response) {
+            public void onResponse(Call<registerUserResponse> call, Response<registerUserResponse> response) {
 
                 if (!response.isSuccessful()) {
                     Toast.makeText(SignUpActivity.this, "Code: " + response.code(), Toast.LENGTH_SHORT).show();
                     progressDialog.dismiss();
 
-                    if (response.code() == 500) {
-                        Toast.makeText(SignUpActivity.this, "exist", Toast.LENGTH_SHORT).show();
-                    }
-                    return;
-
-                } else {
-
-                    User user = response.body();
-
-                    Common.currentUser.setUsername(user.getName());
-
-                    Toast.makeText(SignUpActivity.this, "" +  Common.currentUser.getName(), Toast.LENGTH_SHORT).show();
-
-                    progressDialog.dismiss();
-
-//                    startActivity(new Intent(SignUpActivity.this, MainActivity.class));
-//                    finish();
                 }
 
 
+                if (response.code() == 500) {
+                    Toast.makeText(SignUpActivity.this, "exist", Toast.LENGTH_SHORT).show();
+                }
+
+                registerUserResponse registerUserResponse = response.body();
+
+                User users = registerUserResponse.getUserInfo();
+
+                SharedPreferences.Editor edit = getSharedPreferences("data", Context.MODE_PRIVATE).edit();
+                edit.putString("email", users.getEmail());
+                edit.putString("password", users.getPassword());
+                edit.commit();
+
+                progressDialog.dismiss();
+
+                startActivity(new Intent(SignUpActivity.this, MainActivity.class));
+                finish();
             }
 
+
             @Override
-            public void onFailure(Call<User> call, Throwable t) {
-                Toast.makeText(SignUpActivity.this, "خطأ فى اتصال بالانترنت !", Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<registerUserResponse> call, Throwable t) {
                 progressDialog.dismiss();
+                Log.d(TAG, "onFailure: " + t.getMessage());
+                Toast.makeText(SignUpActivity.this, "" + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(SignUpActivity.this, "خطأ فى اتصال بالانترنت !", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -132,14 +134,13 @@ public class SignUpActivity extends AppCompatActivity {
     private void initView() {
         profileProfileImage = (CircleImageView) findViewById(R.id.profile_profile_image);
         edtname = (MainFontEdittext) findViewById(R.id.edtname);
-        edtusername = (MainFontEdittext) findViewById(R.id.edtusername);
         edtemail = (MainFontEdittext) findViewById(R.id.edtemail);
         edtpassword = (MainFontEdittext) findViewById(R.id.edtpassword);
         edtPasswordVerified = (MainFontEdittext) findViewById(R.id.edtverifiedpassword);
         signBtn = (MainFontButton) findViewById(R.id.signBtn);
 
         progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("waiting...");
+        progressDialog.setMessage("انتظر ...");
 
     }
 
@@ -151,11 +152,6 @@ public class SignUpActivity extends AppCompatActivity {
         if (edtname.getText().toString().length() == 0) {
             edtname.setError("الاسم فارغ");
             edtname.requestFocus();
-            flag = false;
-
-        } else if (edtusername.getText().toString().length() == 0) {
-            edtusername.setError("اسم المستخدم فارغ");
-            edtusername.requestFocus();
             flag = false;
 
         } else if (edtemail.getText().toString().length() == 0) {
