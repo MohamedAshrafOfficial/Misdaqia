@@ -47,7 +47,7 @@ public class MainCategoriesAdapter extends RecyclerView.Adapter<MainCategoriesAd
 
         holder.itemname.setText(categories.get(i).getName());
 
-        Picasso.get().load(categories.get(i).getImage()).into(holder.imageHeader);
+        Picasso.get().load("https://masdaqia.000webhostapp.com/productimages/Bacis/"+categories.get(i).getImage()).into(holder.imageHeader);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

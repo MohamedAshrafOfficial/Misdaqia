@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -25,6 +26,11 @@ import com.example.misdaqia.Model.MainCategoryResponse;
 import com.example.misdaqia.R;
 import com.example.misdaqia.Services.ApiClient;
 import com.example.misdaqia.Services.JsonPlaceHolderApi;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -50,6 +56,9 @@ public class MainActivity extends AppCompatActivity
 
     JsonPlaceHolderApi jsonPlaceHolderApi;
 
+    GoogleSignInClient mGoogleSignInClient;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +75,10 @@ public class MainActivity extends AppCompatActivity
 
         jsonPlaceHolderApi = ApiClient.getApiClient().create(JsonPlaceHolderApi.class);
 
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
 
         getCategories();
@@ -77,34 +90,32 @@ public class MainActivity extends AppCompatActivity
     private void getCategories() {
 
         progressDialog.show();
-            Call<MainCategoryResponse> call = jsonPlaceHolderApi.getCategories();
+        Call<MainCategoryResponse> call = jsonPlaceHolderApi.getCategories();
 
 
-            call.enqueue(new Callback<MainCategoryResponse>() {
-                @Override
-                public void onResponse(Call<MainCategoryResponse> call, Response<MainCategoryResponse> response) {
+        call.enqueue(new Callback<MainCategoryResponse>() {
+            @Override
+            public void onResponse(Call<MainCategoryResponse> call, Response<MainCategoryResponse> response) {
 
-                    List<MainCategory> list = response.body().getMainCategory();
+                List<MainCategory> list = response.body().getMainCategory();
 
 
-                    progressDialog.dismiss();
+                progressDialog.dismiss();
 
-                    categoryRecycler.setAdapter(new MainCategoriesAdapter( MainActivity.this,list));
-                }
+                categoryRecycler.setAdapter(new MainCategoriesAdapter(MainActivity.this, list));
+            }
 
-                @Override
-                public void onFailure(Call<MainCategoryResponse> call, Throwable t) {
-                    progressDialog.dismiss();
+            @Override
+            public void onFailure(Call<MainCategoryResponse> call, Throwable t) {
+                progressDialog.dismiss();
 
-                    Log.d(TAG, "onFailure: " + t.getMessage());
-                    Toast.makeText(MainActivity.this, "" + t.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            });
+                Log.d(TAG, "onFailure: " + t.getMessage());
+                Toast.makeText(MainActivity.this, "" + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
     }
-
-
 
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -191,6 +202,13 @@ public class MainActivity extends AppCompatActivity
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
 
+                            mGoogleSignInClient.signOut()
+                                    .addOnCompleteListener(MainActivity.this, new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            Toast.makeText(MainActivity.this, "تم تسجيل الخروج", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
                             startActivity(new Intent(MainActivity.this, SignInActivity.class));
                             finish();
                         }
@@ -214,14 +232,14 @@ public class MainActivity extends AppCompatActivity
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
 
-        progressDialog=new ProgressDialog(MainActivity.this);
+        progressDialog = new ProgressDialog(MainActivity.this);
         progressDialog.setMessage("please wait ....");
         categoryRecycler = (RecyclerView) findViewById(R.id.category_recycler);
 //        mazadatRecycler = (RecyclerView) findViewById(R.id.mazadat_recycler);
 
 //        LinearLayoutManager horizontalLayoutManagaer = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
 
-        categoryRecycler.setLayoutManager(new GridLayoutManager(this,2));
+        categoryRecycler.setLayoutManager(new GridLayoutManager(this, 2));
 //        mazadatRecycler.setLayoutManager(new LinearLayoutManager(this));
     }
 /////////////////////////////////////////////////////////////////////////////////////////////////

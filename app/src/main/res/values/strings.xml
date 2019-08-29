@@ -40,4 +40,13 @@
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
     <string name="title_activity_seller_main">SellerMainActivity</string>
+
+
+
+    <string name="ClientID">138935483434-ve2apfl1ant6p62gs1sbrgbjkek1qeam.apps.googleusercontent.com</string>
+    <string name="ClientSecret">Agx24Va_z7aOuKmkffBIkyOP</string>
+
+    <string name="facebook_app_id">363415074547650</string>
+    <string name="fb_login_protocol_scheme">fb363415074547650</string>
+
 </resources>

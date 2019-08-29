@@ -40,6 +40,8 @@
             android:inputType="textEmailAddress"
             android:paddingTop="9dp"
             android:maxLines="1"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:paddingBottom="9dp"
             android:textColor="#000" />
 
@@ -54,6 +56,8 @@
             android:background="@drawable/back_edit"
             android:ems="10"
             android:maxLines="1"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:gravity="center"
             android:hint="الرقم السري"
             android:inputType="textWebPassword"
@@ -86,17 +90,42 @@
             android:textSize="16dp"
             android:textStyle="bold" />
 
-        <com.example.misdaqia.Helper.MainFontTextview
-            android:id="@+id/google"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:gravity="center"
-            android:text="google"
-            android:textColor="#fff"
-            android:textSize="16dp"
-            android:textStyle="bold" />
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/google"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/google"/>
+
+            <LinearLayout
+                android:id="@+id/facebook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <com.facebook.login.widget.LoginButton
+                    android:id="@+id/loginbtn"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                     android:visibility="gone"/>
+
+                <ImageView
+                     android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/facebook"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
 
     </LinearLayout>
 
